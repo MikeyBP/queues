@@ -1,19 +1,19 @@
 /*
- * Queue.cpp
+ * Stack.cpp
  *
  *  Created on: Jan 6, 2016
  *      Author: raydelto
  */
 
-#include "Queue.h"
+#include "Stack.h"
 
-Queue::Queue() : _first(NULL),_last(NULL)
+Stack::Stack() : _first(NULL),_last(NULL)
 {
 
 
 }
 
-void Queue::enqueue(Element *element)
+void Stack::push(Element *element)
 {
 	if(_first == NULL) // the queue is empty
 	{
@@ -21,12 +21,13 @@ void Queue::enqueue(Element *element)
 		_last = element;
 	}else //if the queue is not empty
 	{
-		_last -> _next = element;
-		_last = element;
+		Element* temp = _first;
+		_first = element;
+		_first -> _next = temp;
 	}
 }
 
-Element *Queue::dequeue()
+Element *Stack::pop()
 {
 	if(_first == NULL)
 	{
@@ -38,6 +39,6 @@ Element *Queue::dequeue()
 
 }
 
-Queue::~Queue() {
+Stack::~Stack() {
 	// TODO Auto-generated destructor stub
 }
